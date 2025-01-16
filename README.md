@@ -19,10 +19,10 @@ class Cat extends Animal {
 
 public class Main {
     public static void main(String[] args) {
-        Animal myDog = new Dog(); // Animal reference to Dog object
-        Animal myCat = new Cat(); // Animal reference to Cat object
-        myDog.makeSound(); // Outputs: Bark
-        myCat.makeSound(); // Outputs: Meow
+        Animal myDog = new Dog(); 
+        Animal myCat = new Cat(); 
+        myDog.makeSound(); 
+        myCat.makeSound(); 
     }
 }
 
