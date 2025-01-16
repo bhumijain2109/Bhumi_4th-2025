@@ -1,0 +1,55 @@
+Aim: Write a program that takes two strings representing numbers, converts them to wrapper classes, and performs basic arithmetic operations (addition, subtraction, multiplication, division).
+code:
+import java.util.Scanner;
+public class ArithmeticOperations {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter first number:");
+        String firstNumber = scanner.nextLine();
+        System.out.println("Enter second number:");
+        String secondNumber = scanner.nextLine();
+
+        try {
+            Integer num1 = Integer.parseInt(firstNumber);
+            Integer num2 = Integer.parseInt(secondNumber);
+            
+            int addition = num1 + num2;
+            int subtraction = num1 - num2;
+            int multiplication = num1 * num2;
+            double division = (num2 != 0) ? (double) num1 / num2 : Double.NaN; // Handle division by zero
+            
+            System.out.println("Addition: " + addition);
+            System.out.println("Subtraction: " + subtraction);
+            System.out.println("Multiplication: " + multiplication);
+            
+            if (Double.isNaN(division)) {
+                System.out.println("Division: Undefined (Cannot divide by zero)");
+            } else {
+                System.out.println("Division: " + division);
+            }
+
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid input. Please enter valid integers.");
+        }
+    }
+}
+output:
+example 1:
+Enter first number:
+10
+Enter second number:
+5
+Addition: 15
+Subtraction: 5
+Multiplication: 50
+Division: 2.0
+
+example 2:
+Enter first number:
+10
+Enter second number:
+0
+Addition: 10
+Subtraction: 10
+Multiplication: 0
+Division: Undefined (Cannot divide by zero)
