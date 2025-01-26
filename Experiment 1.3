@@ -1,0 +1,61 @@
+ Aim : Design a program for a basic banking system that calculates the average account balance by dividing the total balance by the number of account holders and verifies transaction IDs from an array. The program should demonstrate robust exception handling using multiple try-catch blocks to manage two specific scenarios: an ArithmeticException for division by zero when there are no account holders and an ArrayIndexOutOfBoundsException for accessing invalid indices in the transaction ID array.
+
+
+cod:
+import java.util.Scanner;
+
+class BankAccount {
+    private String accountHolderName;
+    private double balance;
+
+    public BankAccount(String accountHolderName, double balance) {
+        this.accountHolderName = accountHolderName;
+        this.balance = balance;
+    }
+
+    public double getBalance() {
+        return balance;
+    }
+}
+
+public class BankingSystem {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+      
+        BankAccount[] accounts = {
+            new BankAccount("Alice", 1500.0),
+            new BankAccount("Bob", 2500.0),
+            new BankAccount("Charlie", 3000.0)
+        };
+
+        double totalBalance = 0.0;
+        int numberOfAccounts = accounts.length;
+
+        try {
+            for (BankAccount account : accounts) {
+                totalBalance += account.getBalance();
+            }
+
+            double averageBalance = totalBalance / numberOfAccounts;
+            System.out.println("Average Account Balance: " + averageBalance);
+        } catch (ArithmeticException e) {
+            System.out.println("Error: Cannot calculate average balance. No account holders found.");
+        }  
+        int[] transactionIDs = {1001, 1002, 1003};
+        System.out.print("Enter the index of the transaction ID to verify (0 to " + (transactionIDs.length - 1) + "): ");
+        int index = scanner.nextInt();
+
+        try {
+            System.out.println("Transaction ID: " + transactionIDs[index]);
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("Error: Invalid transaction ID index. Please enter a valid index.");
+        } finally {
+            scanner.close();
+        }
+    }
+}
+output:
+Average Account Balance: 2000.0
+Enter the index of the transaction ID to verify (0 to 2): 1
+Transaction ID: 1002
